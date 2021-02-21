@@ -5,7 +5,7 @@ A Flutter project based on a fictional produce and grocery app, created for the 
 ### Subscribe
 Subscribe to my [YouTube Channel](https://www.youtube.com/channel/UCKsp3r1ERjCpKJtD2n5WtPg).
 
-Subscribe to the [series] for more upcoming videos. (https://www.youtube.com/watch?v=om36EASG8JI&list=PL8NTBhIXP2gEdQLyKQe20T6sIqypJz5B2)
+Subscribe to the [series](https://www.youtube.com/watch?v=om36EASG8JI&list=PL8NTBhIXP2gEdQLyKQe20T6sIqypJz5B2) for more upcoming videos.
 
 Follow me on [Twitter](https://twitter.com/drcoderz)
 
