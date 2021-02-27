@@ -3,6 +3,7 @@ import 'package:orilla_fresca_app/helpers/appcolors.dart';
 import 'package:orilla_fresca_app/helpers/iconhelper.dart';
 import 'package:orilla_fresca_app/pages/categorylistpage.dart';
 import 'package:orilla_fresca_app/widgets/iconfont.dart';
+import 'package:orilla_fresca_app/widgets/themebutton.dart';
 
 class WelcomePage extends StatelessWidget {
 
@@ -59,62 +60,25 @@ class WelcomePage extends StatelessWidget {
                     )
                   ),
                   SizedBox(height: 40),
-                  Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: FlatButton(
-                      onPressed: () {},
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50)
-                      ),
-                      color: AppColors.MAIN_COLOR,
-                      padding: EdgeInsets.all(25),
-                      child: Text('Tratar Ahora!',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold)
-                        )
-                      ),
+                  ThemeButton(
+                    label: 'Tratar Ahora!',
+                    highlight: Colors.green[900],
+                    color: AppColors.MAIN_COLOR,
+                    onClick: () {},
                   ),
-                  Container(
-                    margin: EdgeInsets.only(left: 20, right: 20, bottom: 20),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          splashColor: AppColors.MAIN_COLOR.withOpacity(0.2),
-                          highlightColor: AppColors.MAIN_COLOR.withOpacity(0.2),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => CategoryListPage()
-                              )
-                            );
-                          },
-                          child: Container(
-                              padding: EdgeInsets.all(20),
-                              child: Text('Hacer Login',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: AppColors.MAIN_COLOR,
-                                  fontWeight: FontWeight.bold
-                                )
-                              ),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                color: Colors.transparent,
-                                border: Border.all(
-                                  color: AppColors.MAIN_COLOR,
-                                  width: 4
-                                )
-                              )
-                            ),
-                        )
-                      )
-                    )
+                  ThemeButton(
+                    label: "Hacer Login",
+                    labelColor: AppColors.MAIN_COLOR,
+                    color: Colors.transparent,
+                    highlight: AppColors.MAIN_COLOR.withOpacity(0.5),
+                    borderColor: AppColors.MAIN_COLOR,
+                    borderWidth: 4,
+                    onClick: () {
+                      Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CategoryListPage()));
+                    }
                   )
                 ],
               ),
