@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:orilla_fresca_app/helpers/utils.dart';
 import 'package:orilla_fresca_app/pages/splashpage.dart';
 import 'package:orilla_fresca_app/pages/welcomepage.dart';
 

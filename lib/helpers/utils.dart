@@ -1,12 +1,30 @@
 import 'package:orilla_fresca_app/helpers/unitenums.dart';
 import 'package:orilla_fresca_app/models/category.dart';
 import 'package:orilla_fresca_app/models/categorypart.dart';
+import 'package:orilla_fresca_app/models/onboardingcontent.dart';
 import 'package:orilla_fresca_app/models/subcategory.dart';
 
 import 'appcolors.dart';
 import 'iconhelper.dart';
 
 class Utils {
+  static List<OnboardingContent> getOnboarding() {
+    return [
+      OnboardingContent(
+        message: 'Productos\nfrescos, de la\ntierra a su mesa',
+        img: 'onboard1'
+      ),
+      OnboardingContent(
+        message: 'Carnes y embutidos\nfrescos y saludables\npara su deleite',
+        img: 'onboard2'
+      ),
+      OnboardingContent(
+        message: 'Adquiéralos desde\nla comodidad de su\ndispositivo móbil',
+        img: 'onboard3'
+      )
+    ];
+  }
+
   static List<Category> getMockedCategories() {
     return [
       Category(

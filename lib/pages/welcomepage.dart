@@ -5,6 +5,8 @@ import 'package:orilla_fresca_app/pages/categorylistpage.dart';
 import 'package:orilla_fresca_app/widgets/iconfont.dart';
 import 'package:orilla_fresca_app/widgets/themebutton.dart';
 
+import 'onboardingpage.dart';
+
 class WelcomePage extends StatelessWidget {
 
   @override 
@@ -65,6 +67,15 @@ class WelcomePage extends StatelessWidget {
                     highlight: Colors.green[900],
                     color: AppColors.MAIN_COLOR,
                     onClick: () {},
+                  ),
+                  ThemeButton(
+                    label: 'Hacer Onboarding',
+                    highlight: Colors.green[900],
+                    color: AppColors.DARK_GREEN,
+                    onClick: () {
+                      Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => OnboardingPage()));
+                    },
                   ),
                   ThemeButton(
                     label: "Hacer Login",
