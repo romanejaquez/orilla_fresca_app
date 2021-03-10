@@ -8,6 +8,8 @@ import 'package:orilla_fresca_app/widgets/themebutton.dart';
 import 'package:orilla_fresca_app/widgets/unitpricewidget.dart';
 import 'package:orilla_fresca_app/helpers/utils.dart';
 
+import 'mappage.dart';
+
 class DetailsPage extends StatefulWidget {
 
   SubCategory subCategory;
@@ -131,32 +133,39 @@ class DetailsPageState extends State<DetailsPage> {
               )
             ),
             Expanded(
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    CategoryPartsList(
-                      subCategory: widget.subCategory
-                    ),
-                    UnitPriceWidget(
-                      themeColor: widget.subCategory.color,
-                      price: widget.subCategory.price,
-                      unit: widget.subCategory.unit,
-                    ),
-                    ThemeButton(
-                      label: 'Añadir al Carrito',
-                      icon: Icon(Icons.shopping_cart, color: Colors.white),
-                      onClick: () {},
-                    ),
-                    ThemeButton(
-                      label: 'Locación del Producto',
-                      icon: Icon(Icons.location_pin, color: Colors.white),
-                      onClick: () {},
-                      color: AppColors.DARK_GREEN,
-                      highlight: AppColors.DARKER_GREEN,
-                    )
-                  ],
-                )
+              child: SingleChildScrollView(
+                child: Container(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      CategoryPartsList(
+                        subCategory: widget.subCategory
+                      ),
+                      UnitPriceWidget(
+                        themeColor: widget.subCategory.color,
+                        price: widget.subCategory.price,
+                        unit: widget.subCategory.unit,
+                      ),
+                      ThemeButton(
+                        label: 'Añadir al Carrito',
+                        icon: Icon(Icons.shopping_cart, color: Colors.white),
+                        onClick: () {},
+                      ),
+                      ThemeButton(
+                        label: 'Locación del Producto',
+                        icon: Icon(Icons.location_pin, color: Colors.white),
+                        onClick: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MapPage())
+                          );
+                        },
+                        color: AppColors.DARK_GREEN,
+                        highlight: AppColors.DARKER_GREEN,
+                      )
+                    ],
+                  )
+                ),
               ),
             )
           ],

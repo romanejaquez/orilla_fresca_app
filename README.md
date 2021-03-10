@@ -9,6 +9,14 @@ Subscribe to the [series](https://www.youtube.com/watch?v=om36EASG8JI&list=PL8NT
 
 Follow me on [Twitter](https://twitter.com/drcoderz)
 
+## FOR THE MAP TO WORK:
+- Make sure to add your Google Maps API key in the following files:
+    - Under the ***ios*** folder: 
+        - ios/Runner/AppDelegate.swift (add the API Key and import the Google Maps Reference)
+        - ios/Runner/Info.plist (add the missing permissions)
+    - Under the ***android*** folder:
+        - android/app.src/main/AndroidManifest.xml (add the API Key entry and permissions)
+- pubspec.yaml: install the google_maps_flutter dependency
 
 ## Getting Started
 
