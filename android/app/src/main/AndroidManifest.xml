@@ -8,7 +8,7 @@
         android:label="orilla_fresca_app"
         android:icon="@mipmap/ic_launcher">
 
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="<API_KEY>"/>
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="API_KEY"/>
         
         <activity
             android:name=".MainActivity"
