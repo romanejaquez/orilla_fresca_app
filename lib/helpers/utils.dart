@@ -210,35 +210,208 @@ class Utils {
         name: "Frutas",
         imgName: "cat2",
         icon: IconFontHelper.FRUITS,
-        subCategories: []
+        subCategories: [
+          SubCategory(
+            color: AppColors.FRUITS,
+            name: "Kiwi",
+            imgName: "cat2_1",
+            icon: IconFontHelper.FRUITS,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.FRUITS,
+            name: "Banana",
+            imgName: "cat2_2",
+            icon: IconFontHelper.FRUITS,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.FRUITS,
+            name: "Toronja",
+            imgName: "cat2_3",
+            icon: IconFontHelper.FRUITS,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.FRUITS,
+            name: "Naranja",
+            imgName: "cat2_4",
+            icon: IconFontHelper.FRUITS,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.FRUITS,
+            name: "Aguacate",
+            imgName: "cat2_5",
+            icon: IconFontHelper.FRUITS,
+            price: 5.0,
+            parts: []
+          )
+        ]
       ),
       Category(
         color: AppColors.VEGS,
         name: "Vegetales",
         imgName: "cat3",
         icon: IconFontHelper.VEGS,
-        subCategories: []
+        subCategories: [
+          SubCategory(
+            color: AppColors.VEGS,
+            name: "Pimiento Rojo",
+            imgName: "cat3_1",
+            icon: IconFontHelper.VEGS,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.VEGS,
+            name: "Zanahoria",
+            imgName: "cat3_2",
+            icon: IconFontHelper.VEGS,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.VEGS,
+            name: "Espárrago",
+            imgName: "cat3_3",
+            icon: IconFontHelper.VEGS,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.VEGS,
+            name: "Cebolla",
+            imgName: "cat3_4",
+            icon: IconFontHelper.VEGS,
+            price: 5.0,
+            parts: []
+          )
+        ]
       ),
       Category(
         color: AppColors.SEEDS,
         name: "Semillas",
         imgName: "cat4",
         icon: IconFontHelper.SEEDS,
-        subCategories: []
+        subCategories: [
+          SubCategory(
+            color: AppColors.SEEDS,
+            name: "Cajuil",
+            imgName: "cat4_1",
+            icon: IconFontHelper.SEEDS,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.SEEDS,
+            name: "Maní",
+            imgName: "cat4_2",
+            icon: IconFontHelper.SEEDS,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.SEEDS,
+            name: "Almendra",
+            imgName: "cat4_3",
+            icon: IconFontHelper.SEEDS,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.SEEDS,
+            name: "Pistacho",
+            imgName: "cat4_4",
+            icon: IconFontHelper.SEEDS,
+            price: 5.0,
+            parts: []
+          )
+        ]
       ),
       Category(
         color: AppColors.PASTRIES,
         name: "Dulces",
         imgName: "cat5",
         icon: IconFontHelper.PASTRIES,
-        subCategories: []
+        subCategories: [
+          SubCategory(
+            color: AppColors.PASTRIES,
+            name: "Dulce de Leche",
+            imgName: "cat5_1",
+            icon: IconFontHelper.PASTRIES,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.PASTRIES,
+            name: "Dulce de Naranja",
+            imgName: "cat5_2",
+            icon: IconFontHelper.PASTRIES,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.PASTRIES,
+            name: "Dulce de Guayaba",
+            imgName: "cat5_3",
+            icon: IconFontHelper.PASTRIES,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.PASTRIES,
+            name: "Dulce de Coco",
+            imgName: "cat5_4",
+            icon: IconFontHelper.PASTRIES,
+            price: 5.0,
+            parts: []
+          )
+        ]
       ),
       Category(
         color: AppColors.SPICES,
         name: "Especies",
         imgName: "cat6",
         icon: IconFontHelper.SPICES,
-        subCategories: []
+        subCategories: [
+          SubCategory(
+            color: AppColors.SPICES,
+            name: "Orégano",
+            imgName: "cat6_1",
+            icon: IconFontHelper.SPICES,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.SPICES,
+            name: "Bija",
+            imgName: "cat6_2",
+            icon: IconFontHelper.SPICES,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.SPICES,
+            name: "Pimienta",
+            imgName: "cat6_3",
+            icon: IconFontHelper.SPICES,
+            price: 5.0,
+            parts: []
+          ),
+          SubCategory(
+            color: AppColors.SPICES,
+            name: "Canela",
+            imgName: "cat6_4",
+            icon: IconFontHelper.SPICES,
+            price: 5.0,
+            parts: []
+          )
+        ]
       )
     ];
   }

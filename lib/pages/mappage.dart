@@ -1,14 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:orilla_fresca_app/helpers/utils.dart';
+import 'package:orilla_fresca_app/models/subcategory.dart';
 import 'package:orilla_fresca_app/widgets/mainappbar.dart';
 import 'package:orilla_fresca_app/widgets/mapbottompill.dart';
 import 'package:orilla_fresca_app/widgets/mapuserbadge.dart';
 
 const LatLng SOURCE_LOCATION = LatLng(42.7477863,-71.1699932);
-const LatLng DEST_LOCATION = LatLng(42.743902, -71.170009);
+const LatLng DEST_LOCATION = LatLng(42.744421,-71.1698939);
 const double CAMERA_ZOOM = 16;
 const double CAMERA_TILT = 80;
 const double CAMERA_BEARING = 30;
@@ -16,7 +18,9 @@ const double PIN_VISIBLE_POSITION = 20;
 const double PIN_INVISIBLE_POSITION = -220;
 
 class MapPage extends StatefulWidget {
-  MapPage({Key key}) : super(key: key);
+  MapPage({Key key, this.subCategory}) : super(key: key);
+
+  SubCategory subCategory;
 
   @override
   _MapPageState createState() => _MapPageState();
@@ -32,15 +36,23 @@ class _MapPageState extends State<MapPage> {
   LatLng destinationLocation;
   bool userBadgeSelected = false;
 
+  Set<Polyline> _polylines = Set<Polyline>();
+  List<LatLng> polylineCoordinates = [];
+  PolylinePoints polylinePoints;
+
   @override
   void initState() {
     super.initState();
+
+    polylinePoints = PolylinePoints();
 
     // set up initial locations
     this.setInitialLocation();
   }
 
   void setSourceAndDestinationMarkerIcons(BuildContext context) async {
+    String parentCat = widget.subCategory.imgName.split("_")[0];
+
     sourceIcon = await BitmapDescriptor.fromAssetImage(
       ImageConfiguration(devicePixelRatio: 2.0),
       'assets/imgs/source_pin${Utils.deviceSuffix(context)}.png'
@@ -48,7 +60,7 @@ class _MapPageState extends State<MapPage> {
 
     destinationIcon = await BitmapDescriptor.fromAssetImage(
       ImageConfiguration(devicePixelRatio: 2.0),
-      'assets/imgs/destination_pin${Utils.deviceSuffix(context)}.png'
+      'assets/imgs/destination_pin_${parentCat}${Utils.deviceSuffix(context)}.png'
     );
   }
 
@@ -67,7 +79,6 @@ class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
 
-    // set up the marker icons
     this.setSourceAndDestinationMarkerIcons(context);
 
     CameraPosition initialCameraPosition = CameraPosition(
@@ -85,6 +96,7 @@ class _MapPageState extends State<MapPage> {
               myLocationEnabled: true,
               compassEnabled: false,
               tiltGesturesEnabled: false,
+              polylines: _polylines,
               markers: _markers,
               mapType: MapType.normal,
               initialCameraPosition: initialCameraPosition,
@@ -98,6 +110,7 @@ class _MapPageState extends State<MapPage> {
                 _controller.complete(controller);
 
                 showPinsOnMap();
+                setPolylines();
               },
             ),
           ),
@@ -115,7 +128,7 @@ class _MapPageState extends State<MapPage> {
             left: 0,
             right: 0,
             bottom: this.pinPillPosition,
-            child: MapBottomPill()
+            child: MapBottomPill(subCategory: widget.subCategory)
           ),
           Positioned(
             top: 0,
@@ -154,6 +167,37 @@ class _MapPageState extends State<MapPage> {
         }
       ));
     });
+  }
+
+  void setPolylines() async {
+    PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
+      "AIzaSyDBZUFT6BR8N-E3bNOITwD1Oq0LEDViVhY",
+      PointLatLng(
+        currentLocation.latitude,
+        currentLocation.longitude
+      ),
+      PointLatLng(
+        destinationLocation.latitude,
+        destinationLocation.longitude
+      )
+    );
+
+    if (result.status == 'OK') {
+      result.points.forEach((PointLatLng point) {
+        polylineCoordinates.add(LatLng(point.latitude, point.longitude));
+      });
+
+      setState(() {
+        _polylines.add(
+          Polyline(
+            width: 10,
+            polylineId: PolylineId('polyLine'),
+            color: Color(0xFF08A5CB),
+            points: polylineCoordinates
+          )
+        );
+      });
+    }
   }
 }
 

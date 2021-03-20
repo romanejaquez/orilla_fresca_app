@@ -72,7 +72,7 @@ class DetailsPageState extends State<DetailsPage> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text('Carne de ' + widget.subCategory.name,
+                              Text(widget.subCategory.name,
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20
@@ -138,8 +138,11 @@ class DetailsPageState extends State<DetailsPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      CategoryPartsList(
-                        subCategory: widget.subCategory
+                      Visibility(
+                        visible: widget.subCategory.parts.length > 0,
+                        child: CategoryPartsList(
+                          subCategory: widget.subCategory
+                        ),
                       ),
                       UnitPriceWidget(
                         themeColor: widget.subCategory.color,
@@ -157,7 +160,9 @@ class DetailsPageState extends State<DetailsPage> {
                         onClick: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => MapPage())
+                            MaterialPageRoute(
+                              builder: (context) => 
+                              MapPage(subCategory: widget.subCategory))
                           );
                         },
                         color: AppColors.DARK_GREEN,

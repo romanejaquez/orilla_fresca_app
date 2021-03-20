@@ -11,6 +11,8 @@ Follow me on [Twitter](https://twitter.com/drcoderz)
 
 ## FOR THE MAP TO WORK:
 - Make sure to add your Google Maps API key in the following files:
+    - Make sure to have the Directions API enabled on your Google Cloud Console account
+        - More info [here](https://developers.google.com/maps/documentation/directions/overview)
     - Under the ***ios*** folder: 
         - ios/Runner/AppDelegate.swift (add the API Key and import the Google Maps Reference)
         - ios/Runner/Info.plist (add the missing permissions)
