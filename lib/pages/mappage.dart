@@ -5,9 +5,11 @@ import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:orilla_fresca_app/helpers/utils.dart';
 import 'package:orilla_fresca_app/models/subcategory.dart';
+import 'package:orilla_fresca_app/services/categoryselectionservice.dart';
 import 'package:orilla_fresca_app/widgets/mainappbar.dart';
 import 'package:orilla_fresca_app/widgets/mapbottompill.dart';
 import 'package:orilla_fresca_app/widgets/mapuserbadge.dart';
+import 'package:provider/provider.dart';
 
 const LatLng SOURCE_LOCATION = LatLng(42.7477863,-71.1699932);
 const LatLng DEST_LOCATION = LatLng(42.744421,-71.1698939);
@@ -18,8 +20,7 @@ const double PIN_VISIBLE_POSITION = 20;
 const double PIN_INVISIBLE_POSITION = -220;
 
 class MapPage extends StatefulWidget {
-  MapPage({Key key, this.subCategory}) : super(key: key);
-
+  
   SubCategory subCategory;
 
   @override
@@ -79,6 +80,9 @@ class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
 
+    CategorySelectionService catSelection = Provider.of<CategorySelectionService>(context, listen: false);
+    widget.subCategory = catSelection.selectedSubCategory;
+
     this.setSourceAndDestinationMarkerIcons(context);
 
     CameraPosition initialCameraPosition = CameraPosition(
@@ -128,7 +132,7 @@ class _MapPageState extends State<MapPage> {
             left: 0,
             right: 0,
             bottom: this.pinPillPosition,
-            child: MapBottomPill(subCategory: widget.subCategory)
+            child: MapBottomPill()
           ),
           Positioned(
             top: 0,

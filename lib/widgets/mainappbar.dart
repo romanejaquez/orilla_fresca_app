@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/helpers/appcolors.dart';
 import 'package:orilla_fresca_app/helpers/iconhelper.dart';
+import 'package:orilla_fresca_app/widgets/userprofileheader.dart';
 
 import 'iconfont.dart';
 
@@ -26,26 +27,24 @@ class MainAppBarState extends State<MainAppBar> {
   @override 
   Widget build(BuildContext context) {
     return AppBar(
-        title: Center(
-          child: IconFont(
-          iconName: IconFontHelper.LOGO,
-            color: widget.themeColor,
-            size: 40
+        title: GestureDetector(
+          onTap: () {
+            Navigator.of(context).popUntil((route) => route.settings.name == '/categorylistpage');
+          },
+          child: Center(
+            child: IconFont(
+            iconName: IconFontHelper.LOGO,
+              color: widget.themeColor,
+              size: 40
+            ),
           ),
         ),
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         iconTheme: IconThemeData(color: widget.themeColor),
         actions: [
-          Opacity(
-            opacity: widget.showProfilePic ? 1 : 0,
-            child: Container(
-              margin: EdgeInsets.only(right: 10),
-              padding: EdgeInsets.all(10),
-              child: ClipOval(
-                child: Image.asset('assets/imgs/me.jpg')
-              )
-            ),
+          UserProfileHeader(
+            showProfilePic: widget.showProfilePic,
           )
         ],
       );

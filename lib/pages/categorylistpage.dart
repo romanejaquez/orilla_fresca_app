@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:orilla_fresca_app/helpers/appcolors.dart';
-import 'package:orilla_fresca_app/helpers/iconhelper.dart';
 import 'package:orilla_fresca_app/helpers/utils.dart';
 import 'package:orilla_fresca_app/models/category.dart';
 import 'package:orilla_fresca_app/pages/selectedcategorypage.dart';
+import 'package:orilla_fresca_app/services/categoryselectionservice.dart';
 import 'package:orilla_fresca_app/widgets/categorybottombar.dart';
 import 'package:orilla_fresca_app/widgets/categorycard.dart';
-import 'package:orilla_fresca_app/widgets/iconfont.dart';
 import 'package:orilla_fresca_app/widgets/mainappbar.dart';
+import 'package:orilla_fresca_app/widgets/sidemenubar.dart';
+import 'package:provider/provider.dart';
 
 class CategoryListPage extends StatelessWidget {
 
@@ -15,8 +15,13 @@ class CategoryListPage extends StatelessWidget {
 
   @override 
   Widget build(BuildContext context) {
+
+    CategorySelectionService catSelection = Provider.of<CategorySelectionService>(context, listen: false);
+    
     return Scaffold(
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: SideMenuBar()
+      ),
       appBar: MainAppBar(),
       body: Container(
         child: Column(
@@ -36,14 +41,8 @@ class CategoryListPage extends StatelessWidget {
                       return CategoryCard(
                         category: categories[index],
                         onCardClick: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SelectedCategoryPage(
-                                selectedCategory: this.categories[index],
-                              )
-                            )
-                          );
+                          catSelection.selectedCategory = this.categories[index];
+                          Navigator.of(context).pushNamed('/selectedcategorypage');
                         }
                       );
                     },

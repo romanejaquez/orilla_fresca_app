@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/helpers/appcolors.dart';
 import 'package:orilla_fresca_app/helpers/iconhelper.dart';
-import 'package:orilla_fresca_app/pages/categorylistpage.dart';
+import 'package:orilla_fresca_app/services/loginservice.dart';
 import 'package:orilla_fresca_app/widgets/iconfont.dart';
 import 'package:orilla_fresca_app/widgets/themebutton.dart';
-
-import 'onboardingpage.dart';
+import 'package:provider/provider.dart';
 
 class WelcomePage extends StatelessWidget {
 
   @override 
   Widget build(BuildContext context) {
+
+    LoginService loginService = Provider.of<LoginService>(context, listen: false);
+
     return Scaffold(
       body: Container(
         color: Colors.black,
@@ -66,15 +68,16 @@ class WelcomePage extends StatelessWidget {
                     label: 'Tratar Ahora!',
                     highlight: Colors.green[900],
                     color: AppColors.MAIN_COLOR,
-                    onClick: () {},
+                    onClick: () {
+                      Navigator.of(context).pushNamed('/categorylistpage');
+                    },
                   ),
                   ThemeButton(
                     label: 'Hacer Onboarding',
                     highlight: Colors.green[900],
                     color: AppColors.DARK_GREEN,
                     onClick: () {
-                      Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => OnboardingPage()));
+                      Navigator.of(context).pushNamed('/onboardingpage');
                     },
                   ),
                   ThemeButton(
@@ -84,11 +87,12 @@ class WelcomePage extends StatelessWidget {
                     highlight: AppColors.MAIN_COLOR.withOpacity(0.5),
                     borderColor: AppColors.MAIN_COLOR,
                     borderWidth: 4,
-                    onClick: () {
-                      Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => CategoryListPage()));
+                    onClick: () async {
+                      bool success = await loginService.signInWithGoogle();
+
+                      if (success) {
+                        Navigator.of(context).pushNamed('/categorylistpage');
+                      }
                     }
                   )
                 ],

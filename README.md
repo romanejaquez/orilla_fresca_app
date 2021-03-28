@@ -20,6 +20,15 @@ Follow me on [Twitter](https://twitter.com/drcoderz)
         - android/app.src/main/AndroidManifest.xml (add the API Key entry and permissions)
 - pubspec.yaml: install the google_maps_flutter dependency
 
+## FOR THE GOOGLE SIGN IN TO WORK
+- Create your own Firebase project in [Firebase Console](https://firebase.google.com/)
+- Follow the steps on adding both an Android App and IOS App and install the corresponding SDK's
+    - Importing the configuration files (*.plist for IOS, *.json for Android)
+    - Installing the required Flutter packages in [pub.dev](https://pub.dev/):
+        - [google_sign_in](https://pub.dev/packages/google_sign_in)
+        - [firebase_core](https://pub.dev/packages/firebase_core)
+        - [firebase_auth](https://pub.dev/packages/firebase_auth)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

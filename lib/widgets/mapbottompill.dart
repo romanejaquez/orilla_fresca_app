@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/models/subcategory.dart';
+import 'package:orilla_fresca_app/services/categoryselectionservice.dart';
+import 'package:provider/provider.dart';
 
 import 'categoryicon.dart';
 
 class MapBottomPill extends StatelessWidget {
-  MapBottomPill({
-    Key key, this.subCategory
-  }) : super(key: key);
-
+  
   SubCategory subCategory;
 
   @override
   Widget build(BuildContext context) {
+
+    CategorySelectionService catSelection = Provider.of<CategorySelectionService>(context, listen: false);
+    this.subCategory = catSelection.selectedSubCategory;
+    
     return Container(
       margin: EdgeInsets.all(20),
       padding: EdgeInsets.all(15),

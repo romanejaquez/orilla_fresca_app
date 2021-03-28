@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/helpers/appcolors.dart';
 import 'package:orilla_fresca_app/models/subcategory.dart';
+import 'package:orilla_fresca_app/services/categoryselectionservice.dart';
 import 'package:orilla_fresca_app/widgets/categoryicon.dart';
 import 'package:orilla_fresca_app/widgets/categorypartslist.dart';
 import 'package:orilla_fresca_app/widgets/mainappbar.dart';
 import 'package:orilla_fresca_app/widgets/themebutton.dart';
 import 'package:orilla_fresca_app/widgets/unitpricewidget.dart';
 import 'package:orilla_fresca_app/helpers/utils.dart';
-
-import 'mappage.dart';
+import 'package:provider/provider.dart';
 
 class DetailsPage extends StatefulWidget {
 
   SubCategory subCategory;
-  DetailsPage({ this.subCategory });
 
   @override 
   DetailsPageState createState() => DetailsPageState();
@@ -23,6 +22,10 @@ class DetailsPageState extends State<DetailsPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    CategorySelectionService catSelection = Provider.of<CategorySelectionService>(context, listen: false);
+    widget.subCategory = catSelection.selectedSubCategory;
+    
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
@@ -158,12 +161,7 @@ class DetailsPageState extends State<DetailsPage> {
                         label: 'Locación del Producto',
                         icon: Icon(Icons.location_pin, color: Colors.white),
                         onClick: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => 
-                              MapPage(subCategory: widget.subCategory))
-                          );
+                          Navigator.of(context).pushNamed('/mappage');
                         },
                         color: AppColors.DARK_GREEN,
                         highlight: AppColors.DARKER_GREEN,

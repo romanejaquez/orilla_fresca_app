@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/helpers/appcolors.dart';
 
 class CategoryBottomBar extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return Container(

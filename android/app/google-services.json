@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "611280763177",
+    "project_id": "orilla-app",
+    "storage_bucket": "orilla-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611280763177:android:f44f99b9a3b37408531f38",
+        "android_client_info": {
+          "package_name": "com.example.orilla_fresca_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611280763177-qkrv9b2nhsrjnmpjlg2mkqlidlukqqdp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.orilla_fresca_app",
+            "certificate_hash": "4f538a436544b78115017a02da78f08b1f02521c"
+          }
+        },
+        {
+          "client_id": "611280763177-d9el8hdmu9ief3g7unfqg557mdh0l87t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChqLoZtDOtYWu1V5__dKWGkjZ8bRx5F-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611280763177-d9el8hdmu9ief3g7unfqg557mdh0l87t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "611280763177-7spfp8mhp3g73cj6mfhv35j3d9grvgbs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.rjc.orillafresca"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
