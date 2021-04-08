@@ -8,11 +8,13 @@ class SubCategory extends Category {
   List<CategoryPart> parts;
   double price;
   WeightUnits unit;
+  int amount;
 
   SubCategory({
     this.parts = const [],
     this.price = 0.0,
     this.unit = WeightUnits.Lb,
+    this.amount = 0,
     String name,
     String icon,
     Color color,

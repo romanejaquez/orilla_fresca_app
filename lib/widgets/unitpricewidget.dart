@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/helpers/appcolors.dart';
 import 'package:orilla_fresca_app/helpers/unitenums.dart';
 import 'package:orilla_fresca_app/helpers/utils.dart';
+import 'package:orilla_fresca_app/models/subcategory.dart';
+import 'package:orilla_fresca_app/services/categoryselectionservice.dart';
+import 'package:provider/provider.dart';
+
+const int MAX_VALUE = 20;
+const int MIN_VALUE = 0;
 
 class UnitPriceWidget extends StatefulWidget {
   
@@ -25,6 +31,14 @@ class UnitPriceWidgetState extends State<UnitPriceWidget> {
 
   @override 
   Widget build(BuildContext context) {
+
+    CategorySelectionService catSelection = Provider.of<CategorySelectionService>(context);
+    SubCategory subCategory = catSelection.selectedSubCategory;
+
+    widget.themeColor = subCategory.color;
+    widget.price = subCategory.price;
+    widget.unit = subCategory.unit;
+    
     return Column(
         children: [
           Padding(
@@ -58,40 +72,42 @@ class UnitPriceWidgetState extends State<UnitPriceWidget> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: widget.amount < 20 ? () {
-                    setState(() {
-                      widget.amount++;
-                      widget.cost = widget.price * widget.amount;
-                    });
+                  onTap: catSelection.subCategoryAmount < MAX_VALUE ? () {
+                    catSelection.incrementSubCategoryAmount();
                   } : null,
                   child: Icon(Icons.add_circle_outline,
                     size: 50,
-                    color: widget.themeColor
+                    color: catSelection.subCategoryAmount < MAX_VALUE ? widget.themeColor :  widget.themeColor.withOpacity(0.2)
                   ),
                 ),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 10),
-                    child: Center(
-                      child: Text.rich(
-                        TextSpan(
-                          children: [
-                            TextSpan(text: widget.amount.toString(), style: TextStyle(fontSize: 40)),
-                            TextSpan(text: Utils.weightUnitToString(widget.unit), style: TextStyle(fontSize: 20))
-                          ]
-                        )
-                      ),
+                    child: Consumer<CategorySelectionService>(
+                      builder: (context, cat, child) {
+                        return Center(
+                          child: Text.rich(
+                            TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: catSelection.subCategoryAmount.toString(), style: TextStyle(fontSize: 40)),
+                                TextSpan(text: Utils.weightUnitToString(widget.unit), style: TextStyle(fontSize: 20))
+                              ]
+                            )
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
                 GestureDetector(
-                  onTap: widget.amount > 0 ?() {
-                    setState(() {
-                      widget.amount--;
-                      widget.cost = widget.price * widget.amount;
-                    });
+                  onTap: catSelection.subCategoryAmount > MIN_VALUE ?() {
+                    catSelection.decrementSubCategoryAmount();
                   } : null,
-                  child: Icon(Icons.remove_circle_outline, size: 50, color: Colors.grey),
+                  child: Icon(
+                    Icons.remove_circle_outline, 
+                    size: 50, 
+                    color: catSelection.subCategoryAmount > MIN_VALUE ? Colors.grey : Colors.grey[100]),
                 )
               ],
             ),

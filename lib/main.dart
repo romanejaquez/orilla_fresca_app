@@ -6,6 +6,7 @@ import 'package:orilla_fresca_app/pages/onboardingpage.dart';
 import 'package:orilla_fresca_app/pages/selectedcategorypage.dart';
 import 'package:orilla_fresca_app/pages/splashpage.dart';
 import 'package:orilla_fresca_app/pages/welcomepage.dart';
+import 'package:orilla_fresca_app/services/cartservice.dart';
 import 'package:orilla_fresca_app/services/categoryselectionservice.dart';
 import 'package:orilla_fresca_app/services/loginservice.dart';
 import 'package:provider/provider.dart';
@@ -17,8 +18,11 @@ void main() {
         Provider(
           create: (_) => LoginService()
         ),
-        Provider(
+        ChangeNotifierProvider(
           create: (_) => CategorySelectionService()
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CartService()
         )
       ],
       child: MaterialApp(

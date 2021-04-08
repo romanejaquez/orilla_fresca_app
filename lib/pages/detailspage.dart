@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/helpers/appcolors.dart';
+import 'package:orilla_fresca_app/models/cartitem.dart';
 import 'package:orilla_fresca_app/models/subcategory.dart';
+import 'package:orilla_fresca_app/services/cartservice.dart';
 import 'package:orilla_fresca_app/services/categoryselectionservice.dart';
 import 'package:orilla_fresca_app/widgets/categoryicon.dart';
 import 'package:orilla_fresca_app/widgets/categorypartslist.dart';
@@ -25,6 +27,7 @@ class DetailsPageState extends State<DetailsPage> {
 
     CategorySelectionService catSelection = Provider.of<CategorySelectionService>(context, listen: false);
     widget.subCategory = catSelection.selectedSubCategory;
+    CartService cartService = Provider.of<CartService>(context, listen: false);
     
     return Scaffold(
       body: Container(
@@ -119,10 +122,14 @@ class DetailsPageState extends State<DetailsPage> {
                       ),
                       child: Row(
                         children: [
-                          Text('3',
-                            style: TextStyle(
-                              color: Colors.white, fontSize: 15
-                            )
+                          Consumer<CartService>(
+                            builder: (context, cart, child) {
+                              return Text('${cart.items.length}',
+                                style: TextStyle(
+                                  color: Colors.white, fontSize: 15
+                                )
+                              );
+                            },
                           ),
                           Icon(Icons.shopping_cart, color: Colors.white, size: 15)
                         ],
@@ -147,15 +154,43 @@ class DetailsPageState extends State<DetailsPage> {
                           subCategory: widget.subCategory
                         ),
                       ),
-                      UnitPriceWidget(
-                        themeColor: widget.subCategory.color,
-                        price: widget.subCategory.price,
-                        unit: widget.subCategory.unit,
-                      ),
-                      ThemeButton(
-                        label: 'Añadir al Carrito',
-                        icon: Icon(Icons.shopping_cart, color: Colors.white),
-                        onClick: () {},
+                      UnitPriceWidget(),
+                      Consumer<CartService>(
+                        builder: (context, cart, child) {
+                          Widget renderedButton;
+
+                          if (!cart.isSubCategoryAddedToCart(widget.subCategory)) {
+                            renderedButton = ThemeButton(
+                              label: 'Añadir al Carrito',
+                              icon: Icon(Icons.shopping_cart, color: Colors.white),
+                              onClick: () {
+                                cartService.add(
+                                  CartItem(category: widget.subCategory)
+                                );
+                              },
+                            );
+                          }
+                          else {
+                            renderedButton = Container(
+                              padding: EdgeInsets.all(26),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('Añadido al Carrito',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.MAIN_COLOR),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Icon(Icons.check_circle, size: 30, color: AppColors.MAIN_COLOR)
+                                ],
+                              ),
+                            );
+                          }
+
+                          return renderedButton;
+                        },
                       ),
                       ThemeButton(
                         label: 'Locación del Producto',
