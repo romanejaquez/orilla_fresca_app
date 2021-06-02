@@ -175,7 +175,7 @@ class _MapPageState extends State<MapPage> {
 
   void setPolylines() async {
     PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
-      "AIzaSyDBZUFT6BR8N-E3bNOITwD1Oq0LEDViVhY",
+      "<GOOGLE_MAPS_API_KEY_HERE>",
       PointLatLng(
         currentLocation.latitude,
         currentLocation.longitude
