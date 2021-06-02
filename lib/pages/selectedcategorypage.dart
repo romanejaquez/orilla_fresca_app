@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:orilla_fresca_app/helpers/utils.dart';
 import 'package:orilla_fresca_app/models/category.dart';
+import 'package:orilla_fresca_app/services/cartservice.dart';
 import 'package:orilla_fresca_app/services/categoryselectionservice.dart';
 import 'package:orilla_fresca_app/widgets/categoryicon.dart';
 import 'package:orilla_fresca_app/widgets/mainappbar.dart';
@@ -14,6 +16,7 @@ class SelectedCategoryPage extends StatelessWidget {
 
     CategorySelectionService catSelection = Provider.of<CategorySelectionService>(context, listen: false);
     selectedCategory = catSelection.selectedCategory;
+    CartService cartService = Provider.of<CartService>(context, listen: false);
     
     return Scaffold(
       appBar: MainAppBar(),
@@ -42,8 +45,9 @@ class SelectedCategoryPage extends StatelessWidget {
                   (index) {
                     return GestureDetector(
                       onTap: () {
-                        catSelection.selectedSubCategory = this.selectedCategory.subCategories[index];
-                        Navigator.of(context).pushNamed('/detailspage');
+                        var subCat = this.selectedCategory.subCategories[index];
+                        catSelection.selectedSubCategory = cartService.getCategoryFromCart(subCat);
+                        Utils.mainAppNav.currentState.pushNamed('/detailspage');
                       },
                       child: Container(
                         child: Column(

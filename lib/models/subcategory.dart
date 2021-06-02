@@ -10,6 +10,10 @@ class SubCategory extends Category {
   WeightUnits unit;
   int amount;
 
+  double getTotalPrice() {
+    return this.amount * this.price;
+  }
+
   SubCategory({
     this.parts = const [],
     this.price = 0.0,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/pages/categorylistpage.dart';
 import 'package:orilla_fresca_app/pages/detailspage.dart';
+import 'package:orilla_fresca_app/pages/mainpage.dart';
 import 'package:orilla_fresca_app/pages/mappage.dart';
 import 'package:orilla_fresca_app/pages/onboardingpage.dart';
 import 'package:orilla_fresca_app/pages/selectedcategorypage.dart';
@@ -10,6 +11,8 @@ import 'package:orilla_fresca_app/services/cartservice.dart';
 import 'package:orilla_fresca_app/services/categoryselectionservice.dart';
 import 'package:orilla_fresca_app/services/loginservice.dart';
 import 'package:provider/provider.dart';
+
+import 'helpers/utils.dart';
 
 void main() {
   runApp(
@@ -26,14 +29,14 @@ void main() {
         )
       ],
       child: MaterialApp(
-        
+        navigatorKey: Utils.mainAppNav,
         theme: ThemeData(fontFamily: 'Raleway'),
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
           '/': (context) => SplashPage(duration: 3, goToPage: WelcomePage()),
           '/welcomepage': (context) => WelcomePage(),
-          '/categorylistpage': (context) => CategoryListPage(),
+          '/mainpage': (context) => MainPage(),
           '/selectedcategorypage': (context) => SelectedCategoryPage(),
           '/detailspage': (context) => DetailsPage(),
           '/mappage': (context) => MapPage(),

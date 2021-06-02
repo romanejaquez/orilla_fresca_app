@@ -92,7 +92,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             visible: index == _content.length - 1,
                             child: ThemeButton(
                               onClick: () {
-                                Navigator.of(context).pushNamed('/categorylistpage');
+                                Utils.mainAppNav.currentState.pushNamed('/mainpage');
                               },
                               label: 'Entrar Ahora!',
                               color: AppColors.DARK_GREEN,
@@ -137,7 +137,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               SizedBox(height: 20),
               ThemeButton(
                 onClick: () {
-                  Navigator.of(context).pushNamed('/categorylistpage');
+                  Utils.mainAppNav.currentState.pushNamed('/mainpage');
                 },
                 label: 'Saltar Onboarding'
               )

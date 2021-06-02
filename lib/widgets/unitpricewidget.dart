@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:orilla_fresca_app/helpers/appcolors.dart';
 import 'package:orilla_fresca_app/helpers/unitenums.dart';
 import 'package:orilla_fresca_app/helpers/utils.dart';
 import 'package:orilla_fresca_app/models/subcategory.dart';
@@ -9,7 +8,7 @@ import 'package:provider/provider.dart';
 const int MAX_VALUE = 20;
 const int MIN_VALUE = 0;
 
-class UnitPriceWidget extends StatefulWidget {
+class UnitPriceWidget extends StatelessWidget {
   
   Color themeColor;
   int amount = 0;
@@ -17,28 +16,12 @@ class UnitPriceWidget extends StatefulWidget {
   WeightUnits unit;
   double cost = 0.0;
 
-  UnitPriceWidget({ 
-    this.themeColor = AppColors.MAIN_COLOR,
-    this.price = 0,
-    this.unit = WeightUnits.Lb
-  });
-
-  @override 
-  UnitPriceWidgetState createState() => UnitPriceWidgetState();
-}
-
-class UnitPriceWidgetState extends State<UnitPriceWidget> {
-
   @override 
   Widget build(BuildContext context) {
 
     CategorySelectionService catSelection = Provider.of<CategorySelectionService>(context);
     SubCategory subCategory = catSelection.selectedSubCategory;
-
-    widget.themeColor = subCategory.color;
-    widget.price = subCategory.price;
-    widget.unit = subCategory.unit;
-    
+   
     return Column(
         children: [
           Padding(
@@ -47,7 +30,7 @@ class UnitPriceWidgetState extends State<UnitPriceWidget> {
               TextSpan(
                 children: [
                   TextSpan(text: 'Unidad: '),
-                  TextSpan(text: Utils.weightUnitToString(widget.unit) + ' ', style: TextStyle(fontWeight: FontWeight.bold)),
+                  TextSpan(text: Utils.weightUnitToString(subCategory.unit) + ' ', style: TextStyle(fontWeight: FontWeight.bold)),
                   TextSpan(text: '(max. 20)', style: TextStyle(fontSize: 12))
                 ]
               )
@@ -77,7 +60,7 @@ class UnitPriceWidgetState extends State<UnitPriceWidget> {
                   } : null,
                   child: Icon(Icons.add_circle_outline,
                     size: 50,
-                    color: catSelection.subCategoryAmount < MAX_VALUE ? widget.themeColor :  widget.themeColor.withOpacity(0.2)
+                    color: catSelection.subCategoryAmount < MAX_VALUE ? subCategory.color :  subCategory.color.withOpacity(0.2)
                   ),
                 ),
                 Expanded(
@@ -91,7 +74,7 @@ class UnitPriceWidgetState extends State<UnitPriceWidget> {
                               children: [
                                 TextSpan(
                                   text: catSelection.subCategoryAmount.toString(), style: TextStyle(fontSize: 40)),
-                                TextSpan(text: Utils.weightUnitToString(widget.unit), style: TextStyle(fontSize: 20))
+                                TextSpan(text: Utils.weightUnitToString(subCategory.unit), style: TextStyle(fontSize: 20))
                               ]
                             )
                           ),
@@ -121,13 +104,13 @@ class UnitPriceWidgetState extends State<UnitPriceWidget> {
                   TextSpan(
                     children: [
                       TextSpan(text: 'Precio: '),
-                      TextSpan(text: '\$${widget.price.toStringAsFixed(2)} / ${Utils.weightUnitToString(widget.unit)}',
+                      TextSpan(text: '\$${subCategory.price.toStringAsFixed(2)} / ${Utils.weightUnitToString(subCategory.unit)}',
                         style: TextStyle(fontWeight: FontWeight.bold)
                       )
                     ]
                   )
                 ),
-                Text('\$${widget.cost.toStringAsFixed(2)}',
+                Text('\$${subCategory.price.toStringAsFixed(2)}',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)
                 )
               ],

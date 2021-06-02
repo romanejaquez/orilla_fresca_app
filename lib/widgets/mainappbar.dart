@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/helpers/appcolors.dart';
 import 'package:orilla_fresca_app/helpers/iconhelper.dart';
+import 'package:orilla_fresca_app/helpers/utils.dart';
 import 'package:orilla_fresca_app/widgets/userprofileheader.dart';
 
 import 'iconfont.dart';
@@ -29,7 +30,7 @@ class MainAppBarState extends State<MainAppBar> {
     return AppBar(
         title: GestureDetector(
           onTap: () {
-            Navigator.of(context).popUntil((route) => route.settings.name == '/categorylistpage');
+            Utils.mainAppNav.currentState.popUntil((route) => route.settings.name == '/mainpage');
           },
           child: Center(
             child: IconFont(

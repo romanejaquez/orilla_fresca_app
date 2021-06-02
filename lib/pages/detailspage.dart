@@ -196,7 +196,7 @@ class DetailsPageState extends State<DetailsPage> {
                         label: 'Locación del Producto',
                         icon: Icon(Icons.location_pin, color: Colors.white),
                         onClick: () {
-                          Navigator.of(context).pushNamed('/mappage');
+                          Utils.mainAppNav.currentState.pushNamed('/mappage');
                         },
                         color: AppColors.DARK_GREEN,
                         highlight: AppColors.DARKER_GREEN,

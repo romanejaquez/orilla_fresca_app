@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/helpers/appcolors.dart';
 import 'package:orilla_fresca_app/helpers/iconhelper.dart';
+import 'package:orilla_fresca_app/helpers/utils.dart';
 import 'package:orilla_fresca_app/services/loginservice.dart';
 import 'package:orilla_fresca_app/widgets/iconfont.dart';
 import 'package:orilla_fresca_app/widgets/themebutton.dart';
@@ -69,7 +70,7 @@ class WelcomePage extends StatelessWidget {
                     highlight: Colors.green[900],
                     color: AppColors.MAIN_COLOR,
                     onClick: () {
-                      Navigator.of(context).pushNamed('/categorylistpage');
+                      Utils.mainAppNav.currentState.pushNamed('/mainpage');
                     },
                   ),
                   ThemeButton(
@@ -77,7 +78,7 @@ class WelcomePage extends StatelessWidget {
                     highlight: Colors.green[900],
                     color: AppColors.DARK_GREEN,
                     onClick: () {
-                      Navigator.of(context).pushNamed('/onboardingpage');
+                      Utils.mainAppNav.currentState.pushNamed('/onboardingpage');
                     },
                   ),
                   ThemeButton(
@@ -91,7 +92,7 @@ class WelcomePage extends StatelessWidget {
                       bool success = await loginService.signInWithGoogle();
 
                       if (success) {
-                        Navigator.of(context).pushNamed('/categorylistpage');
+                        Utils.mainAppNav.currentState.pushNamed('/mainpage');
                       }
                     }
                   )

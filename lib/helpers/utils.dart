@@ -9,6 +9,10 @@ import 'appcolors.dart';
 import 'iconhelper.dart';
 
 class Utils {
+
+  static GlobalKey<NavigatorState> mainListNav = GlobalKey();
+  static GlobalKey<NavigatorState> mainAppNav = GlobalKey();
+  
   static List<OnboardingContent> getOnboarding() {
     return [
       OnboardingContent(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/helpers/appcolors.dart';
+import 'package:orilla_fresca_app/helpers/utils.dart';
 import 'package:orilla_fresca_app/services/cartservice.dart';
 import 'package:provider/provider.dart';
 
@@ -25,8 +26,10 @@ class CategoryBottomBar extends StatelessWidget {
                 child: IconButton(
                   splashColor: Colors.grey[100],
                   highlightColor: Colors.grey[100],
-                  icon: Icon(Icons.favorite, color: AppColors.MAIN_COLOR),
-                  onPressed: () {},
+                  icon: Icon(Icons.list, color: AppColors.MAIN_COLOR),
+                  onPressed: () {
+                    Utils.mainListNav.currentState.pushReplacementNamed('/mainpage/categorylistpage');
+                  },
                 ),
               ),
             ),
@@ -38,6 +41,7 @@ class CategoryBottomBar extends StatelessWidget {
                   splashColor: Colors.grey[100],
                   highlightColor: Colors.grey[100],
                   onTap: () {
+                    Utils.mainListNav.currentState.pushReplacementNamed('/mainpage/shoppinglistpage');
                   },
                   child: Container(
                     padding: EdgeInsets.all(12),
@@ -73,8 +77,10 @@ class CategoryBottomBar extends StatelessWidget {
                 child: IconButton(
                   splashColor: Colors.grey[100],
                   highlightColor: Colors.grey[100],
-                  icon: Icon(Icons.pin_drop, color: AppColors.MAIN_COLOR),
-                  onPressed: () {},
+                  icon: Icon(Icons.favorite, color: AppColors.MAIN_COLOR),
+                  onPressed: () {
+                    Utils.mainListNav.currentState.pushReplacementNamed('/mainpage/favoritespage');
+                  },
                 ),
               ),
             ),
@@ -85,7 +91,9 @@ class CategoryBottomBar extends StatelessWidget {
                   splashColor: Colors.grey[100],
                   highlightColor: Colors.grey[100],
                   icon: Icon(Icons.settings, color: AppColors.MAIN_COLOR),
-                  onPressed: () {},
+                  onPressed: () {
+                    Utils.mainListNav.currentState.pushReplacementNamed('/mainpage/settingspage');
+                  },
                 ),
               ),
             ),

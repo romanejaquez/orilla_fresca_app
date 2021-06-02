@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/helpers/appcolors.dart';
 import 'package:orilla_fresca_app/helpers/iconhelper.dart';
+import 'package:orilla_fresca_app/helpers/utils.dart';
 import 'package:orilla_fresca_app/services/loginservice.dart';
 import 'package:orilla_fresca_app/widgets/iconfont.dart';
 import 'package:provider/provider.dart';
@@ -26,12 +27,12 @@ class SideMenuBar extends StatelessWidget {
                   onPressed: () async {
                     if (userLoggedIn) {
                       await loginService.signOut();
-                      Navigator.of(context).pushReplacementNamed('/welcomepage');
+                      Utils.mainAppNav.currentState.pushReplacementNamed('/welcomepage');
                     }
                     else {
                       bool success = await loginService.signInWithGoogle();
                       if (success) {
-                        Navigator.of(context).pushNamed('/categorylistpage');
+                        Utils.mainAppNav.currentState.pushNamed('/mainpage');
                       }
                     }
                   },
@@ -50,7 +51,7 @@ class SideMenuBar extends StatelessWidget {
                   visible: !userLoggedIn,
                   child: TextButton(
                     onPressed: () async {
-                      Navigator.of(context).pushNamed('/welcomepage');
+                      Utils.mainAppNav.currentState.pushNamed('/welcomepage');
                     },
                     child: Row(
                       children: [
