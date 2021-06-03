@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 class UserProfileHeader extends StatelessWidget {
 
-  bool showProfilePic;
+  bool? showProfilePic;
 
   UserProfileHeader({
     this.showProfilePic
@@ -15,11 +15,11 @@ class UserProfileHeader extends StatelessWidget {
   Widget build(BuildContext context) {
 
     LoginService loginService = Provider.of<LoginService>(context, listen: false);
-    LoginUserModel userModel = loginService.loggedInUserModel;
+    LoginUserModel? userModel = loginService.loggedInUserModel;
 
-    String imgPath = userModel != null ? userModel.photoUrl : '';
+    String? imgPath = userModel != null ? userModel.photoUrl : '';
     
-    return this.showProfilePic && imgPath.length > 0 ? 
+    return this.showProfilePic! && imgPath!.length > 0 ? 
       Container(
         margin: EdgeInsets.only(right: 10),
         padding: EdgeInsets.all(10),

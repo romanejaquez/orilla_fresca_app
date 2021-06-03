@@ -97,7 +97,7 @@ class ShoppingListPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               ClipOval(
-                                child: Image.asset('./assets/imgs/' + itemSubCategory.imgName + '.png',
+                                child: Image.asset('./assets/imgs/' + itemSubCategory.imgName! + '.png',
                                   width: 50,
                                   height: 50,
                                   fit: BoxFit.cover
@@ -108,7 +108,7 @@ class ShoppingListPage extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(itemSubCategory.name, 
+                                    Text(itemSubCategory.name!, 
                                       style: TextStyle(
                                         color: itemSubCategory.color
                                       )

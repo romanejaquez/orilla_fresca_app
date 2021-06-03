@@ -30,7 +30,7 @@ class MainAppBarState extends State<MainAppBar> {
     return AppBar(
         title: GestureDetector(
           onTap: () {
-            Utils.mainAppNav.currentState.popUntil((route) => route.settings.name == '/mainpage');
+            Utils.mainAppNav.currentState!.popUntil((route) => route.settings.name == '/mainpage');
           },
           child: Center(
             child: IconFont(

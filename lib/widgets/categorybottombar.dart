@@ -28,7 +28,7 @@ class CategoryBottomBar extends StatelessWidget {
                   highlightColor: Colors.grey[100],
                   icon: Icon(Icons.list, color: AppColors.MAIN_COLOR),
                   onPressed: () {
-                    Utils.mainListNav.currentState.pushReplacementNamed('/mainpage/categorylistpage');
+                    Utils.mainListNav.currentState!.pushReplacementNamed('/mainpage/categorylistpage');
                   },
                 ),
               ),
@@ -41,7 +41,7 @@ class CategoryBottomBar extends StatelessWidget {
                   splashColor: Colors.grey[100],
                   highlightColor: Colors.grey[100],
                   onTap: () {
-                    Utils.mainListNav.currentState.pushReplacementNamed('/mainpage/shoppinglistpage');
+                    Utils.mainListNav.currentState!.pushReplacementNamed('/mainpage/shoppinglistpage');
                   },
                   child: Container(
                     padding: EdgeInsets.all(12),
@@ -79,7 +79,7 @@ class CategoryBottomBar extends StatelessWidget {
                   highlightColor: Colors.grey[100],
                   icon: Icon(Icons.favorite, color: AppColors.MAIN_COLOR),
                   onPressed: () {
-                    Utils.mainListNav.currentState.pushReplacementNamed('/mainpage/favoritespage');
+                    Utils.mainListNav.currentState!.pushReplacementNamed('/mainpage/favoritespage');
                   },
                 ),
               ),
@@ -92,7 +92,7 @@ class CategoryBottomBar extends StatelessWidget {
                   highlightColor: Colors.grey[100],
                   icon: Icon(Icons.settings, color: AppColors.MAIN_COLOR),
                   onPressed: () {
-                    Utils.mainListNav.currentState.pushReplacementNamed('/mainpage/settingspage');
+                    Utils.mainListNav.currentState!.pushReplacementNamed('/mainpage/settingspage');
                   },
                 ),
               ),

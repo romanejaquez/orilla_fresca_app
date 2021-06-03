@@ -16,7 +16,7 @@ class OnboardingPage extends StatefulWidget {
 class _OnboardingPageState extends State<OnboardingPage> {
   List<OnboardingContent> _content = Utils.getOnboarding();
   int pageIndex = 0;
-  PageController _controller;
+  PageController? _controller;
 
   @override
   void initState() {
@@ -27,7 +27,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   @override
   void dispose() {
     super.dispose();
-    _controller.dispose();
+    _controller!.dispose();
   }
 
   @override
@@ -78,7 +78,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                                 ),
                                 Image.asset('assets/imgs/${_content[index].img}.png'),
                                 SizedBox(height: 40),
-                                Text(_content[index].message,
+                                Text(_content[index].message!,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: AppColors.MAIN_COLOR,
@@ -92,7 +92,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             visible: index == _content.length - 1,
                             child: ThemeButton(
                               onClick: () {
-                                Utils.mainAppNav.currentState.pushNamed('/mainpage');
+                                Utils.mainAppNav.currentState!.pushNamed('/mainpage');
                               },
                               label: 'Entrar Ahora!',
                               color: AppColors.DARK_GREEN,
@@ -112,7 +112,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 (index) => 
                   GestureDetector(
                     onTap: () {
-                      _controller.animateTo(
+                      _controller!.animateTo(
                         MediaQuery.of(context).size.width * index,
                         duration: Duration(milliseconds: 500),
                         curve: Curves.easeInOut
@@ -137,7 +137,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               SizedBox(height: 20),
               ThemeButton(
                 onClick: () {
-                  Utils.mainAppNav.currentState.pushNamed('/mainpage');
+                  Utils.mainAppNav.currentState!.pushNamed('/mainpage');
                 },
                 label: 'Saltar Onboarding'
               )

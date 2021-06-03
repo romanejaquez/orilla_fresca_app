@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/helpers/utils.dart';
 import 'package:orilla_fresca_app/models/category.dart';
 import 'package:orilla_fresca_app/services/categoryselectionservice.dart';
+import 'package:orilla_fresca_app/services/categoryservice.dart';
 import 'package:orilla_fresca_app/widgets/categorycard.dart';
 import 'package:provider/provider.dart';
 
 class CategoryListPage extends StatelessWidget {
 
-  List<Category> categories = Utils.getMockedCategories();
-
   @override 
   Widget build(BuildContext context) {
 
     CategorySelectionService catSelection = Provider.of<CategorySelectionService>(context, listen: false);
+    CategoryService catService = Provider.of<CategoryService>(context, listen: false);
+    List<Category> categories = catService.getCategories();
     
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -31,8 +32,8 @@ class CategoryListPage extends StatelessWidget {
               return CategoryCard(
                 category: categories[index],
                 onCardClick: () {
-                  catSelection.selectedCategory = this.categories[index];
-                  Utils.mainAppNav.currentState.pushNamed('/selectedcategorypage');
+                  catSelection.selectedCategory = categories[index];
+                  Utils.mainAppNav.currentState!.pushNamed('/selectedcategorypage');
                 }
               );
             },

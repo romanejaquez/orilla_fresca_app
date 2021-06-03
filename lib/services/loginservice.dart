@@ -9,15 +9,15 @@ class LoginService {
     Firebase.initializeApp();
   }
 
-  LoginUserModel _userModel;
+  LoginUserModel? _userModel;
 
-  LoginUserModel get loggedInUserModel => _userModel;
+  LoginUserModel? get loggedInUserModel => _userModel;
 
   Future<bool> signInWithGoogle() async {
     // Trigger the authentication flow
     GoogleSignIn googleSignIn = GoogleSignIn();
 
-    final GoogleSignInAccount googleUser = await googleSignIn.signIn();
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
 
     if (googleUser == null) {
       return false;
@@ -30,22 +30,22 @@ class LoginService {
     final GoogleAuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
-    );
+    ) as GoogleAuthCredential;
 
     // Once signed in, return the UserCredential
     UserCredential userCreds = await FirebaseAuth.instance.signInWithCredential(credential);
     if (userCreds != null) {
       _userModel = LoginUserModel(
-        displayName: userCreds.user.displayName,
-        photoUrl: userCreds.user.photoURL,
-        email: userCreds.user.email
+        displayName: userCreds.user!.displayName,
+        photoUrl: userCreds.user!.photoURL,
+        email: userCreds.user!.email
       );
     }
 
     return true;
   }
 
-  void signOut() async {
+  Future<void> signOut() async {
     await GoogleSignIn().signOut();
     _userModel = null;
   }

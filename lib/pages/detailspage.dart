@@ -14,7 +14,7 @@ import 'package:provider/provider.dart';
 
 class DetailsPage extends StatefulWidget {
 
-  SubCategory subCategory;
+  SubCategory? subCategory;
 
   @override 
   DetailsPageState createState() => DetailsPageState();
@@ -42,7 +42,7 @@ class DetailsPageState extends State<DetailsPage> {
                     height: 300,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: AssetImage('assets/imgs/' + widget.subCategory.imgName + '_desc.png'),
+                        image: AssetImage('assets/imgs/' + widget.subCategory!.imgName! + '_desc.png'),
                         fit: BoxFit.cover
                       )
                     ),
@@ -71,14 +71,14 @@ class DetailsPageState extends State<DetailsPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CategoryIcon(
-                            color: widget.subCategory.color,
-                            iconName: widget.subCategory.icon,
+                            color: widget.subCategory!.color,
+                            iconName: widget.subCategory!.icon,
                             size: 50
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text(widget.subCategory.name,
+                              Text(widget.subCategory!.name!,
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20
@@ -88,10 +88,10 @@ class DetailsPageState extends State<DetailsPage> {
                               Container(
                                 padding: EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                  color: widget.subCategory.color,
+                                  color: widget.subCategory!.color,
                                   borderRadius: BorderRadius.circular(20)
                                 ),
-                                child: Text('\$${widget.subCategory.price.toStringAsFixed(2)} / ${Utils.weightUnitToString(widget.subCategory.unit)}',
+                                child: Text('\$${widget.subCategory!.price.toStringAsFixed(2)} / ${Utils.weightUnitToString(widget.subCategory!.unit)}',
                                   style: TextStyle(
                                     fontSize: 20,
                                     color: Colors.white
@@ -149,7 +149,7 @@ class DetailsPageState extends State<DetailsPage> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Visibility(
-                        visible: widget.subCategory.parts.length > 0,
+                        visible: widget.subCategory!.parts.length > 0,
                         child: CategoryPartsList(
                           subCategory: widget.subCategory
                         ),
@@ -196,7 +196,7 @@ class DetailsPageState extends State<DetailsPage> {
                         label: 'Locación del Producto',
                         icon: Icon(Icons.location_pin, color: Colors.white),
                         onClick: () {
-                          Utils.mainAppNav.currentState.pushNamed('/mappage');
+                          Utils.mainAppNav.currentState!.pushNamed('/mappage');
                         },
                         color: AppColors.DARK_GREEN,
                         highlight: AppColors.DARKER_GREEN,

@@ -27,12 +27,12 @@ class SideMenuBar extends StatelessWidget {
                   onPressed: () async {
                     if (userLoggedIn) {
                       await loginService.signOut();
-                      Utils.mainAppNav.currentState.pushReplacementNamed('/welcomepage');
+                      Utils.mainAppNav.currentState!.pushReplacementNamed('/welcomepage');
                     }
                     else {
                       bool success = await loginService.signInWithGoogle();
                       if (success) {
-                        Utils.mainAppNav.currentState.pushNamed('/mainpage');
+                        Utils.mainAppNav.currentState!.pushNamed('/mainpage');
                       }
                     }
                   },
@@ -51,7 +51,7 @@ class SideMenuBar extends StatelessWidget {
                   visible: !userLoggedIn,
                   child: TextButton(
                     onPressed: () async {
-                      Utils.mainAppNav.currentState.pushNamed('/welcomepage');
+                      Utils.mainAppNav.currentState!.pushNamed('/welcomepage');
                     },
                     child: Row(
                       children: [

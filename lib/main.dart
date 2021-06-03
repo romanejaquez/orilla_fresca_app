@@ -1,5 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:orilla_fresca_app/pages/categorylistpage.dart';
 import 'package:orilla_fresca_app/pages/detailspage.dart';
 import 'package:orilla_fresca_app/pages/mainpage.dart';
 import 'package:orilla_fresca_app/pages/mappage.dart';
@@ -9,6 +9,7 @@ import 'package:orilla_fresca_app/pages/splashpage.dart';
 import 'package:orilla_fresca_app/pages/welcomepage.dart';
 import 'package:orilla_fresca_app/services/cartservice.dart';
 import 'package:orilla_fresca_app/services/categoryselectionservice.dart';
+import 'package:orilla_fresca_app/services/categoryservice.dart';
 import 'package:orilla_fresca_app/services/loginservice.dart';
 import 'package:provider/provider.dart';
 
@@ -26,6 +27,9 @@ void main() {
         ),
         ChangeNotifierProvider(
           create: (_) => CartService()
+        ),
+        Provider(
+          create: (_) => CategoryService()
         )
       ],
       child: MaterialApp(
@@ -34,7 +38,7 @@ void main() {
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
-          '/': (context) => SplashPage(duration: 3, goToPage: WelcomePage()),
+          '/': (context) => SplashPage(duration: 3, goToPage: '/welcomepage'),
           '/welcomepage': (context) => WelcomePage(),
           '/mainpage': (context) => MainPage(),
           '/selectedcategorypage': (context) => SelectedCategoryPage(),

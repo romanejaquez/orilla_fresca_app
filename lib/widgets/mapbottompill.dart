@@ -7,7 +7,7 @@ import 'categoryicon.dart';
 
 class MapBottomPill extends StatelessWidget {
   
-  SubCategory subCategory;
+  SubCategory? subCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class MapBottomPill extends StatelessWidget {
                   clipBehavior: Clip.none,
                   children: [
                     ClipOval(
-                      child: Image.asset('assets/imgs/${this.subCategory.imgName}.png',
+                      child: Image.asset('assets/imgs/${this.subCategory!.imgName}.png',
                         width: 60,
                         height: 60,
                         fit: BoxFit.cover
@@ -49,8 +49,8 @@ class MapBottomPill extends StatelessWidget {
                       bottom: -10,
                       right: -10,
                       child: CategoryIcon(
-                        color: this.subCategory.color,
-                        iconName: this.subCategory.icon,
+                        color: this.subCategory!.color,
+                        iconName: this.subCategory!.icon,
                         size: 20,
                         padding: 5
                       ),
@@ -62,7 +62,7 @@ class MapBottomPill extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(this.subCategory.name,
+                      Text(this.subCategory!.name!,
                         style: TextStyle(
                           color: Colors.grey[700],
                           fontWeight: FontWeight.bold,
@@ -72,13 +72,13 @@ class MapBottomPill extends StatelessWidget {
                       Text('Venta por Libra'),
                       Text('2km de distancia',
                         style: TextStyle(
-                          color: this.subCategory.color
+                          color: this.subCategory!.color
                         )
                       )
                     ],
                   ),
                 ),
-                Icon(Icons.location_pin, color: this.subCategory.color, size: 50)
+                Icon(Icons.location_pin, color: this.subCategory!.color, size: 50)
               ],
             )
           ),
@@ -97,7 +97,7 @@ class MapBottomPill extends StatelessWidget {
                           image: AssetImage('assets/imgs/farmer.jpeg'),
                           fit: BoxFit.cover
                         ),
-                        border: Border.all(color: this.subCategory.color, width: 4)
+                        border: Border.all(color: this.subCategory!.color!, width: 4)
                       ),
                     ),
                     SizedBox(width: 20),
