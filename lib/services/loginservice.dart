@@ -5,10 +5,6 @@ import 'package:orilla_fresca_app/models/loginusermodel.dart';
 
 class LoginService {
 
-  LoginService() {
-    Firebase.initializeApp();
-  }
-
   LoginUserModel? _userModel;
 
   LoginUserModel? get loggedInUserModel => _userModel;

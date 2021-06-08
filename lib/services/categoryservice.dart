@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:orilla_fresca_app/models/category.dart';
 
 class CategoryService {
@@ -7,10 +6,6 @@ class CategoryService {
   FirebaseFirestore? _instance;
 
   List<Category> _categories = [];
-
-  CategoryService() {
-    //Firebase.initializeApp();
-  }
 
   List<Category> getCategories() {
     return _categories;

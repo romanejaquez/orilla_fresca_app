@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/helpers/unitenums.dart';
-import 'package:orilla_fresca_app/models/category.dart';
-import 'package:orilla_fresca_app/models/categorypart.dart';
 import 'package:orilla_fresca_app/models/onboardingcontent.dart';
-import 'package:orilla_fresca_app/models/subcategory.dart';
 
-import 'appcolors.dart';
-import 'iconhelper.dart';
 
 class Utils {
 
