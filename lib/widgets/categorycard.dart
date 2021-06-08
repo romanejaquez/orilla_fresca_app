@@ -4,8 +4,8 @@ import 'package:orilla_fresca_app/models/category.dart';
 import 'categoryicon.dart';
 
 class CategoryCard extends StatelessWidget {
-  Category category;
-  Function onCardClick;
+  Category? category;
+  Function? onCardClick;
 
   CategoryCard({ this.category, this.onCardClick });
 
@@ -13,7 +13,7 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        this.onCardClick();
+        this.onCardClick!();
       },
       child: Container(
         margin: EdgeInsets.all(20),
@@ -24,7 +24,7 @@ class CategoryCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Image.asset(
-                    'assets/imgs/' + this.category.imgName + '.png',
+                    'assets/imgs/' + this.category!.imgName! + '.png',
                     fit: BoxFit.cover),
               ),
             ),
@@ -53,10 +53,10 @@ class CategoryCard extends StatelessWidget {
                 child: Row(
                   children: [
                     CategoryIcon(
-                        color: this.category.color,
-                        iconName: this.category.icon),
+                        color: this.category!.color,
+                        iconName: this.category!.icon),
                     SizedBox(width: 10),
-                    Text(this.category.name,
+                    Text(this.category!.name!,
                         style: TextStyle(color: Colors.white, fontSize: 25))
                   ],
                 ),

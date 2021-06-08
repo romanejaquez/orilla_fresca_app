@@ -15,9 +15,9 @@ class CartService extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool isSubCategoryAddedToCart(SubCategory cat) {
+  bool isSubCategoryAddedToCart(SubCategory? cat) {
     return _items.length > 0 ? _items.any(
-      (CartItem item) => item.category.name == cat.name) : false;
+      (CartItem item) => item.category!.name == cat!.name) : false;
   }
 
   double getShoppingCartTotalPrice() {
@@ -40,13 +40,13 @@ class CartService extends ChangeNotifier {
     notifyListeners();
   }
 
-  SubCategory getCategoryFromCart(SubCategory cat) {
-    SubCategory subCat = cat;
-    if (_items.length > 0 && _items.any((CartItem item) => item.category.name == cat.name)) {
-      CartItem cartItem = _items.firstWhere((CartItem item) => item.category.name == cat.name);
+  SubCategory? getCategoryFromCart(SubCategory cat) {
+    SubCategory? subCat = cat;
+    if (_items.length > 0 && _items.any((CartItem item) => item.category!.name == cat.name)) {
+      CartItem cartItem = _items.firstWhere((CartItem item) => item.category!.name == cat.name);
 
       if (cartItem != null) {
-        subCat = cartItem.category;
+        subCat = cartItem.category as SubCategory?;
       }
     }
 

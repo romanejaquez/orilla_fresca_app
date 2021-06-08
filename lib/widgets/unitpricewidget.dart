@@ -10,17 +10,17 @@ const int MIN_VALUE = 0;
 
 class UnitPriceWidget extends StatelessWidget {
   
-  Color themeColor;
+  Color? themeColor;
   int amount = 0;
   double price = 0.0;
-  WeightUnits unit;
+  WeightUnits? unit;
   double cost = 0.0;
 
   @override 
   Widget build(BuildContext context) {
 
     CategorySelectionService catSelection = Provider.of<CategorySelectionService>(context);
-    SubCategory subCategory = catSelection.selectedSubCategory;
+    SubCategory subCategory = catSelection.selectedSubCategory!;
    
     return Column(
         children: [
@@ -60,7 +60,7 @@ class UnitPriceWidget extends StatelessWidget {
                   } : null,
                   child: Icon(Icons.add_circle_outline,
                     size: 50,
-                    color: catSelection.subCategoryAmount < MAX_VALUE ? subCategory.color :  subCategory.color.withOpacity(0.2)
+                    color: catSelection.subCategoryAmount < MAX_VALUE ? subCategory.color :  subCategory.color!.withOpacity(0.2)
                   ),
                 ),
                 Expanded(

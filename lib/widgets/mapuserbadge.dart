@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 
 class MapUserBadge extends StatelessWidget {
   
-  bool isSelected;
+  bool? isSelected;
 
   MapUserBadge({ this.isSelected });
 
@@ -14,9 +14,9 @@ class MapUserBadge extends StatelessWidget {
   Widget build(BuildContext context) {
 
     LoginService loginService = Provider.of<LoginService>(context, listen: false);
-    LoginUserModel userModel = loginService.loggedInUserModel;
-    String userImg = userModel != null ? userModel.photoUrl : '';
-    String userName = userModel != null ? userModel.displayName : '';
+    LoginUserModel? userModel = loginService.loggedInUserModel;
+    String userImg = userModel != null ? userModel.photoUrl! : '';
+    String userName = userModel != null ? userModel.displayName! : '';
     bool showMapUserBadge = userImg.isNotEmpty && userName.isNotEmpty;
     
     return Visibility(
@@ -27,7 +27,7 @@ class MapUserBadge extends StatelessWidget {
         padding: EdgeInsets.all(12),
         margin: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
         decoration: BoxDecoration(
-          color: this.isSelected ? AppColors.MAIN_COLOR : Colors.white,
+          color: this.isSelected! ? AppColors.MAIN_COLOR : Colors.white,
           borderRadius: BorderRadius.circular(100),
           boxShadow: [
             BoxShadow(
@@ -49,7 +49,7 @@ class MapUserBadge extends StatelessWidget {
                   fit: BoxFit.cover
                 ),
                 border: Border.all(
-                  color: this.isSelected ? Colors.white : AppColors.MAIN_COLOR,
+                  color: this.isSelected! ? Colors.white : AppColors.MAIN_COLOR,
                   width: 1
                 )
               )
@@ -62,12 +62,12 @@ class MapUserBadge extends StatelessWidget {
                   Text(userName,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: this.isSelected ? Colors.white : Colors.grey
+                      color: this.isSelected! ? Colors.white : Colors.grey
                     )
                   ),
                   Text('Mi Locación',
                     style: TextStyle(
-                      color: this.isSelected ? Colors.white : AppColors.MAIN_COLOR
+                      color: this.isSelected! ? Colors.white : AppColors.MAIN_COLOR
                     )
                   )
                 ],
@@ -75,7 +75,7 @@ class MapUserBadge extends StatelessWidget {
             ),
             Icon(
               Icons.location_pin,
-              color: this.isSelected ? Colors.white : AppColors.MAIN_COLOR,
+              color: this.isSelected! ? Colors.white : AppColors.MAIN_COLOR,
               size: 40
             )
           ],

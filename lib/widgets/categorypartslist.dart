@@ -4,7 +4,7 @@ import 'package:orilla_fresca_app/models/subcategory.dart';
 
 class CategoryPartsList extends StatefulWidget {
 
-  SubCategory subCategory;
+  SubCategory? subCategory;
 
   CategoryPartsList({ this.subCategory });
   
@@ -26,13 +26,13 @@ class CategoryPartsListState extends State<CategoryPartsList> {
           height: 200,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: widget.subCategory.parts.length,
+            itemCount: widget.subCategory!.parts.length,
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
                 onTap: () {
                   setState(() {
-                    widget.subCategory.parts.forEach((CategoryPart part) {
-                      part.isSelected = widget.subCategory.parts[index] == part;
+                    widget.subCategory!.parts.forEach((CategoryPart part) {
+                      part.isSelected = widget.subCategory!.parts[index] == part;
                     });
                   });
                 },
@@ -44,13 +44,13 @@ class CategoryPartsListState extends State<CategoryPartsList> {
                       width: 120,
                       height: 150,
                       decoration: BoxDecoration(
-                        border: widget.subCategory.parts[index].isSelected ?
-                          Border.all(color: widget.subCategory.color, width: 7)
+                        border: widget.subCategory!.parts[index].isSelected! ?
+                          Border.all(color: widget.subCategory!.color!, width: 7)
                           : null,
                         borderRadius: BorderRadius.circular(25),
                         image: DecorationImage(
                           image: AssetImage('assets/imgs/' + 
-                            widget.subCategory.parts[index].imgName + '.png'
+                            widget.subCategory!.parts[index].imgName! + '.png'
                           ), fit: BoxFit.cover
                         ),
                         boxShadow: [
@@ -64,9 +64,9 @@ class CategoryPartsListState extends State<CategoryPartsList> {
                     ),
                     Container(
                       margin: EdgeInsets.only(left: 25),
-                      child: Text(widget.subCategory.parts[index].name,
+                      child: Text(widget.subCategory!.parts[index].name!,
                         textAlign: TextAlign.left,
-                        style: TextStyle(color: widget.subCategory.color)
+                        style: TextStyle(color: widget.subCategory!.color)
                       )
                     )
                   ],

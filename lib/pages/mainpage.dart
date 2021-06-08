@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/helpers/utils.dart';
-import 'package:orilla_fresca_app/models/category.dart';
 import 'package:orilla_fresca_app/pages/categorylistpage.dart';
 import 'package:orilla_fresca_app/pages/favoritespage.dart';
 import 'package:orilla_fresca_app/pages/settingspage.dart';
@@ -10,8 +9,6 @@ import 'package:orilla_fresca_app/widgets/mainappbar.dart';
 import 'package:orilla_fresca_app/widgets/sidemenubar.dart';
 
 class MainPage extends StatelessWidget {
-
-  List<Category> categories = Utils.getMockedCategories();
 
   @override 
   Widget build(BuildContext context) {

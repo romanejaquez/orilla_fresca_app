@@ -1,7 +1,7 @@
 class LoginUserModel {
-  String displayName;
-  String email;
-  String photoUrl;
+  String? displayName;
+  String? email;
+  String? photoUrl;
 
   LoginUserModel(
     {

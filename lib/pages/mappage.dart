@@ -21,7 +21,7 @@ const double PIN_INVISIBLE_POSITION = -220;
 
 class MapPage extends StatefulWidget {
   
-  SubCategory subCategory;
+  SubCategory? subCategory;
 
   @override
   _MapPageState createState() => _MapPageState();
@@ -29,17 +29,17 @@ class MapPage extends StatefulWidget {
 
 class _MapPageState extends State<MapPage> {
   Completer<GoogleMapController> _controller = Completer();
-  BitmapDescriptor sourceIcon;
-  BitmapDescriptor destinationIcon;
+  late BitmapDescriptor sourceIcon;
+  late BitmapDescriptor destinationIcon;
   Set<Marker> _markers = Set<Marker>();
   double pinPillPosition = PIN_VISIBLE_POSITION;
-  LatLng currentLocation;
-  LatLng destinationLocation;
+  late LatLng currentLocation;
+  late LatLng destinationLocation;
   bool userBadgeSelected = false;
 
   Set<Polyline> _polylines = Set<Polyline>();
   List<LatLng> polylineCoordinates = [];
-  PolylinePoints polylinePoints;
+  late PolylinePoints polylinePoints;
 
   @override
   void initState() {
@@ -52,7 +52,7 @@ class _MapPageState extends State<MapPage> {
   }
 
   void setSourceAndDestinationMarkerIcons(BuildContext context) async {
-    String parentCat = widget.subCategory.imgName.split("_")[0];
+    String parentCat = widget.subCategory!.imgName!.split("_")[0];
 
     sourceIcon = await BitmapDescriptor.fromAssetImage(
       ImageConfiguration(devicePixelRatio: 2.0),

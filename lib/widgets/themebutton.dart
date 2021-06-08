@@ -3,11 +3,11 @@ import 'package:orilla_fresca_app/helpers/appcolors.dart';
 
 class ThemeButton extends StatelessWidget {
 
-  String label;
+  String? label;
   Function onClick;
   Color color;
-  Color highlight;
-  Widget icon;
+  Color? highlight;
+  Widget? icon;
   Color borderColor;
   Color labelColor;
   double borderWidth;
@@ -20,7 +20,7 @@ class ThemeButton extends StatelessWidget {
     this.icon,
     this.borderColor = Colors.transparent,
     this.borderWidth = 4,
-    @required this.onClick });
+    required this.onClick });
 
     @override 
     Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class ThemeButton extends StatelessWidget {
                                     width: this.borderWidth)
                   ),
                   child: this.icon == null ? 
-                  Text(this.label,
+                  Text(this.label!,
                       style: TextStyle(
                           fontSize: 16,
                           color: this.labelColor,
@@ -54,9 +54,9 @@ class ThemeButton extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      this.icon,
+                      this.icon!,
                       SizedBox(width: 10),
-                      Text(this.label,
+                      Text(this.label!,
                       style: TextStyle(
                           fontSize: 16,
                           color: this.labelColor,

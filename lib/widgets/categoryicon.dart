@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'iconfont.dart';
 
 class CategoryIcon extends StatelessWidget {
-  Color color;
-  String iconName;
+  Color? color;
+  String? iconName;
   double size;
   double padding;
 
