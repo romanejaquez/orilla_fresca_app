@@ -28,7 +28,8 @@ Follow me on [Twitter](https://twitter.com/drcoderz)
         - [google_sign_in](https://pub.dev/packages/google_sign_in)
         - [firebase_core](https://pub.dev/packages/firebase_core)
         - [firebase_auth](https://pub.dev/packages/firebase_auth)
-
+        - [cloud_firestore](https://pub.dev/packages/cloud_firestore)
+        
 ## Getting Started
 
 This project is a starting point for a Flutter application.
