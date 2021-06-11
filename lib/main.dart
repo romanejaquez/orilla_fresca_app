@@ -19,7 +19,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        Provider(
+        ChangeNotifierProvider(
           create: (_) => LoginService()
         ),
         ChangeNotifierProvider(

@@ -35,32 +35,40 @@ class ShoppingListPage extends StatelessWidget {
                     )
                   ),
                 ),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Material(
-                    child: InkWell(
-                      onTap: () {
-                        cartService.removeAll();
-                      },
-                      child: Container(
-                        padding: EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
-                        child: Row(
-                          children: [
-                            Icon(Icons.delete, color: AppColors.DARK_GREEN),
-                            SizedBox(width: 5),
-                            Text('Borrar Todo',
-                              style: TextStyle(color: AppColors.DARK_GREEN, fontSize: 12)
+                Consumer<CartService>(
+                  builder: (context, cart, child) {
+                    if (cart.items.length > 0) {
+                      return ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Material(
+                          child: InkWell(
+                            onTap: () {
+                              cartService.removeAll(context);
+                            },
+                            child: Container(
+                              padding: EdgeInsets.only(top: 3, bottom: 3, left: 15, right: 15),
+                              child: Row(
+                                children: [
+                                  Icon(Icons.delete, size: 20, color: AppColors.DARK_GREEN),
+                                  SizedBox(width: 5),
+                                  Text('Borrar Todo',
+                                    style: TextStyle(color: AppColors.DARK_GREEN, fontSize: 12)
+                                  ),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: AppColors.MAIN_COLOR.withOpacity(0.2)
+                              )
                             ),
-                          ],
+                          ),
                         ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: AppColors.MAIN_COLOR.withOpacity(0.2)
-                        )
-                      ),
-                    ),
-                  ),
-                )
+                      );
+                    }
+
+                    // return empty container
+                    return Container();
+                })
               ],
             ),
             Expanded(
@@ -129,7 +137,7 @@ class ShoppingListPage extends StatelessWidget {
                               ),
                               IconButton(
                                 onPressed: () {
-                                  cart.remove(item);
+                                  cart.remove(context, item);
                                 },
                                 icon: Icon(
                                   Icons.highlight_off,

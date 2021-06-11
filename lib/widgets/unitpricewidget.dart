@@ -56,7 +56,7 @@ class UnitPriceWidget extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: catSelection.subCategoryAmount < MAX_VALUE ? () {
-                    catSelection.incrementSubCategoryAmount();
+                    catSelection.incrementSubCategoryAmount(context);
                   } : null,
                   child: Icon(Icons.add_circle_outline,
                     size: 50,
@@ -85,7 +85,7 @@ class UnitPriceWidget extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: catSelection.subCategoryAmount > MIN_VALUE ?() {
-                    catSelection.decrementSubCategoryAmount();
+                    catSelection.decrementSubCategoryAmount(context);
                   } : null,
                   child: Icon(
                     Icons.remove_circle_outline, 
