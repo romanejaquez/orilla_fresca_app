@@ -4,14 +4,19 @@ import 'package:orilla_fresca_app/pages/categorylistpage.dart';
 import 'package:orilla_fresca_app/pages/favoritespage.dart';
 import 'package:orilla_fresca_app/pages/settingspage.dart';
 import 'package:orilla_fresca_app/pages/shoppinglistpage.dart';
+import 'package:orilla_fresca_app/services/cartservice.dart';
 import 'package:orilla_fresca_app/widgets/categorybottombar.dart';
 import 'package:orilla_fresca_app/widgets/mainappbar.dart';
 import 'package:orilla_fresca_app/widgets/sidemenubar.dart';
+import 'package:provider/provider.dart';
 
 class MainPage extends StatelessWidget {
 
   @override 
   Widget build(BuildContext context) {
+
+    CartService cartService = Provider.of<CartService>(context, listen: false);
+    cartService.loadCartItemsFromFirebase(context);
 
     return Scaffold(
       drawer: Drawer(

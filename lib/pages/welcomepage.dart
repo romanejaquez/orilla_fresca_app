@@ -48,7 +48,7 @@ class WelcomePage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 50),
-                  Text('Bienvenido',
+                  Text('Bienvenido/a',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,

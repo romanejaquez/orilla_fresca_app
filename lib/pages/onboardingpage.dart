@@ -77,12 +77,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
                                   ),
                                 ),
                                 Image.asset('assets/imgs/${_content[index].img}.png'),
-                                SizedBox(height: 40),
+                                SizedBox(height: 20),
                                 Text(_content[index].message!,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: AppColors.MAIN_COLOR,
-                                    fontSize: 25
+                                    fontSize: 20
                                   )
                                 )
                               ],

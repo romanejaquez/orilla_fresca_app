@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:orilla_fresca_app/helpers/appcolors.dart';
 import 'package:orilla_fresca_app/helpers/iconhelper.dart';
 import 'package:orilla_fresca_app/helpers/utils.dart';
+import 'package:orilla_fresca_app/services/categoryselectionservice.dart';
+import 'package:orilla_fresca_app/services/categoryservice.dart';
 import 'package:orilla_fresca_app/services/loginservice.dart';
 import 'package:orilla_fresca_app/widgets/iconfont.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +13,8 @@ class SideMenuBar extends StatelessWidget {
   Widget build(BuildContext context) {
 
     LoginService loginService = Provider.of<LoginService>(context, listen: false);
+    CategoryService categoryService = Provider.of<CategoryService>(context, listen: false);
+    
     bool userLoggedIn = loginService.loggedInUserModel != null;
     
     return Scaffold(
@@ -27,6 +31,7 @@ class SideMenuBar extends StatelessWidget {
                   onPressed: () async {
                     if (userLoggedIn) {
                       await loginService.signOut();
+                      categoryService.resetCategoriesToDefaults();
                       Utils.mainAppNav.currentState!.pushReplacementNamed('/welcomepage');
                     }
                     else {
@@ -40,7 +45,7 @@ class SideMenuBar extends StatelessWidget {
                     children: [
                       Icon(userLoggedIn ? Icons.logout : Icons.login, color: Colors.white, size: 20),
                       SizedBox(width: 10),
-                      Text(userLoggedIn ? 'Sign Out' : 'Sign In',
+                      Text(userLoggedIn ? 'Salir' : 'Entrar',
                         style: TextStyle(color: Colors.white, fontSize: 20)
                       )
                     ],
@@ -57,7 +62,7 @@ class SideMenuBar extends StatelessWidget {
                       children: [
                         Icon(Icons.home, color: Colors.white, size: 20),
                         SizedBox(width: 10),
-                        Text('Welcome',
+                        Text('Bienvenido/a',
                           style: TextStyle(color: Colors.white, fontSize: 20)
                         )
                       ],

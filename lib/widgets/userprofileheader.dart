@@ -14,18 +14,21 @@ class UserProfileHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    LoginService loginService = Provider.of<LoginService>(context, listen: false);
-    LoginUserModel? userModel = loginService.loggedInUserModel;
+    return Consumer<LoginService>(
+      builder: (context, loginService, child) {
+        LoginUserModel? userModel = loginService.loggedInUserModel;
 
-    String? imgPath = userModel != null ? userModel.photoUrl : '';
-    
-    return this.showProfilePic! && imgPath!.length > 0 ? 
-      Container(
-        margin: EdgeInsets.only(right: 10),
-        padding: EdgeInsets.all(10),
-        child: ClipOval(
-          child: Image.network(imgPath)
-        )
-      ): SizedBox(width: 40, height: 40);
+        String? imgPath = userModel != null ? userModel.photoUrl : '';
+        
+        return this.showProfilePic! && imgPath!.length > 0 ? 
+          Container(
+            margin: EdgeInsets.only(right: 10),
+            padding: EdgeInsets.all(10),
+            child: ClipOval(
+              child: Image.network(imgPath)
+            )
+          ): SizedBox(width: 40, height: 40);
+      },
+    );
   }
 }
