@@ -18,12 +18,14 @@ class CategoryService {
     CollectionReference categories = _instance!.collection('orilla_fresca_data');
 
     DocumentSnapshot snapshot = await categories.doc('categories').get();
-    var data = snapshot.data() as Map;
-    var categoriesData = data['categories'] as List<dynamic>;
-    categoriesData.forEach((catData) {
-        Category cat = Category.fromJson(catData);
-        _categories.add(cat);   
-    });
+    if (snapshot.exists) {
+      Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+      var categoriesData = data['categories'] as List<dynamic>;
+      categoriesData.forEach((catData) {
+          Category cat = Category.fromJson(catData);
+          _categories.add(cat);   
+      });
+    }
   }
 
   void resetCategoriesToDefaults() {
