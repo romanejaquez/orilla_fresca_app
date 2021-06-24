@@ -116,27 +116,29 @@ class CartService extends ChangeNotifier {
       .doc(loginService.loggedInUserModel!.uid)
       .get().then((DocumentSnapshot snapshot) {
 
-        Map<String, dynamic> cartItems = snapshot.get(FieldPath(['cartItems']));
-        
-        catService.getCategories().forEach((Category cat) {
-          cat.subCategories!.forEach((Category subCat) {
-            if (cartItems.keys.contains(subCat.imgName)) {
-              var amount = cartItems[subCat.imgName] as int;
-              (subCat as SubCategory).amount = amount;
-              _items.add(CartItem(
-                category: subCat
-              ));
+        if (snapshot.exists) {
+          Map<String, dynamic> cartItems = snapshot.get(FieldPath(['cartItems']));
+          
+          catService.getCategories().forEach((Category cat) {
+            cat.subCategories!.forEach((Category subCat) {
+              if (cartItems.keys.contains(subCat.imgName)) {
+                var amount = cartItems[subCat.imgName] as int;
+                (subCat as SubCategory).amount = amount;
+                _items.add(CartItem(
+                  category: subCat
+                ));
 
-              // force resetting the selected subcategory to trigger a rebuild on the unit price widget
-              if (categorySelectionService.selectedSubCategory != null 
-              && categorySelectionService.selectedSubCategory!.name == subCat.name) {
-                categorySelectionService.selectedSubCategory = subCat;
+                // force resetting the selected subcategory to trigger a rebuild on the unit price widget
+                if (categorySelectionService.selectedSubCategory != null 
+                && categorySelectionService.selectedSubCategory!.name == subCat.name) {
+                  categorySelectionService.selectedSubCategory = subCat;
+                }
               }
-            }
+            });
           });
-        });
 
-        notifyListeners();
+          notifyListeners();
+        }
       });
     }
   }
